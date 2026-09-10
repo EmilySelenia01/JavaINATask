@@ -1,0 +1,23 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: ms-pedidos
+
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=pedidosdb;encrypt=true;trustServerCertificate=true
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: sa
+    password: "crpp"
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+microservicios:
+  usuarios:
+    url: http://localhost:8081
+  productos:
+    url: http://localhost:8082

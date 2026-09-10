@@ -1,5 +1,6 @@
 package com.taller.ms_usuarios.service;
 
+import com.taller.ms_usuarios.common.exception.UsuarioNotFoundException;
 import com.taller.ms_usuarios.dto.UsuarioRequestDTO;
 import com.taller.ms_usuarios.dto.UsuarioResponseDTO;
 import com.taller.ms_usuarios.mapper.UsuarioMapper;
@@ -36,5 +37,15 @@ public class UsuarioService {
         UsuarioResponseDTO usuarioResponse = usuarioMapper.toResponse(usuario);
         return usuarioResponse;
     }//END method
+
+    public UsuarioResponseDTO findById(Integer id) {
+
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(
+                        () -> new UsuarioNotFoundException(id)
+                );
+
+        return usuarioMapper.toResponse(usuario);
+    }
 
 }//END class

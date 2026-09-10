@@ -48,5 +48,14 @@ public class UsuarioController {
                 .body(usuarioService.findAll());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<UsuarioResponseDTO> findById(
+            @PathVariable Integer id) {
+
+        return ResponseEntity.ok(
+                usuarioService.findById(id)
+        );
+    }
+
 
 }//END class
